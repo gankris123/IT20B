@@ -19,10 +19,34 @@ class Array{
         }
         console.log(output);
     }
+
+    insert(index, element){
+        //Correcting Statement 
+        if (index <0 || index > this.data.Adapter.length){
+            console.log("Invalid Index");
+            return;
+        }
+        //Shifting Condition
+        for(let i=this.length; i>index; i--){
+            this.data [i] = this.data[i-i];
+        }
+
+        //Array Condition
+        this.data[index] = element;
+        this.length++;
+    }
+
 }
+
 
 //
 
 arr1 = new Array([4,2,3]);
 
 arr1.Traverse();
+arr1.insert(0,9);
+arr1.traverse();arr1.insert(2,5);
+
+
+
+
