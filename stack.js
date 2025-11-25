@@ -20,6 +20,17 @@ class Stacks{
         }
         console.log(output);
     }
+    is_empty(){
+        return this.topIndex === -1;
+    }
+    size(){
+        return this.topIndex+1;
+    }
+    peek(){
+        //Correcting Statement
+        if(this.is_empty()) return null;
+        return this.data[this.topIndex];
+    }
 }
 
 
@@ -27,9 +38,15 @@ class Stacks{
 
 stack1 = new this.stack1();
 
+console.log(stack1.is_empty());
+
 stack1.push(4);
 stack1.push(2);
 stack1.push(3);
-stack1.traverse(1);
+stack1.push(5);
+stack1,push(8);
+console.log(stack1.is_empty());
+console.log(stack1.size());
+console.log("The top element is" +stack1.peek());
 
 
