@@ -11,11 +11,9 @@ class LinkedList{
         this.head = null;
     }
 
-
-
-    insert_at_beginning(){
+    insert_at_beginning(element){
         const node = new Node(element);
-        node.net=this.head;
+        node.next = this.head;
         this.head = node;
     }
 
@@ -24,40 +22,56 @@ class LinkedList{
         let output = "";
 
         while(current){
-            output += current.value + "";
+            output += current.value + " ";
             current = current.next;
         }
 
         return output;
     }
+
     insert_at_end(element){
         const node = new Node(element);
 
-        if (!this.head){
+        if(!this.head){
             this.head = node;
             return;
         }
 
-        while (current.next){
-        current = current.next;
-    }
-    current.next = node;
-}
-insert_after(target,element){
-    let current = this.head;
-    while(current){
+        let current  = this.head;
 
-        if(current.value === target){
-            const node = new Node(element);
-            node.next = current.next;
-            current.next = node;
-            return;
+        while(current.next){
+            current = current.next;
         }
-        current = current.next;
-    }
-    console.log("Target not found");
 
-}
+        current.next = node;
+    }
+
+    insert_after(target,element){
+        let current = this.head;
+
+        while(current){
+            if(current.value === target){
+                const node = new Node(element);
+                node.next = current.next;
+                current.next = node;
+                return;
+            }
+            current = current.next;
+        }
+
+        console.log("Target not found");
+    }
+
+    search(element){
+        let current = this.head;
+
+        while(current){
+            if(current.value === element)
+            return "Element found";
+            current = current.next;
+        }
+        return "Element not found";
+    }
 }
 
 let list1 = new LinkedList();
@@ -67,3 +81,4 @@ list1.insert_at_end(3);
 console.log(list1.traverse());
 list1.insert_after(4,17);
 console.log(list1.traverse());
+console.log(list1.search(4));
